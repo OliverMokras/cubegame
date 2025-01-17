@@ -1,0 +1,201 @@
+[gd_scene load_steps=20 format=3 uid="uid://c2rqmf62eesux"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_noj0n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mjrl"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p55s7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1w2w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlema"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.588235)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjr1l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_vgdwm"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_naplh"]
+events = [SubResource("InputEventKey_vgdwm")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ul41i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lboaa"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxgy4"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3311j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p73mp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3htaa"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlyym"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_vaem4"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_hxsql"]
+events = [SubResource("InputEventKey_vaem4")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iyftx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3fjm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_noj0n")
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.925353, 0.925353, 0.925353, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mjrl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -117.5
+offset_right = 124.5
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p55s7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1w2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlema")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjr1l")
+shortcut = SubResource("Shortcut_naplh")
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ul41i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1w2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlema")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lboaa")
+text = "QUIT
+"
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+initial_position = 2
+size = Vector2i(260, 250)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_hxgy4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="StartButton" type="Button" parent="PopupPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3311j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p73mp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3htaa")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wlyym")
+shortcut = SubResource("Shortcut_hxsql")
+text = "START"
+
+[node name="Container" type="Control" parent="PopupPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer/Container"]
+layout_mode = 2
+offset_top = -62.0
+offset_right = 250.0
+offset_bottom = -39.0
+text = "Enter custom seed (optional)
+"
+
+[node name="LineEdit" type="LineEdit" parent="PopupPanel/VBoxContainer/Container"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iyftx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u3fjm")
+alignment = 1
+max_length = 10
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PopupPanel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

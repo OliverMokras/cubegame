@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://dijw18kuulk3s"]
+
+[ext_resource type="Script" path="res://scripts/final_screen.gd" id="1_jddg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lwi2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7lt8"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pbgpg"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_337c3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kplli"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brsx3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.588235)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwa57"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="FinalScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jddg3")
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.925353, 0.925353, 0.925353, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7lwi2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.358
+anchor_top = 0.111
+anchor_right = 0.661
+anchor_bottom = 0.25
+offset_left = -0.416016
+offset_top = 0.071991
+offset_right = -0.472046
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOUR TIME"
+label_settings = SubResource("LabelSettings_a7lt8")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.252
+anchor_right = 0.634
+anchor_bottom = 0.401
+offset_left = -0.128021
+offset_top = -0.296005
+offset_right = -0.367981
+offset_bottom = 0.151978
+grow_horizontal = 2
+grow_vertical = 2
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_pbgpg")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.381
+anchor_top = 0.621914
+anchor_right = 0.631
+anchor_bottom = 0.728
+offset_left = 0.0879822
+offset_right = 0.0879517
+offset_bottom = 0.255951
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_337c3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kplli")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brsx3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwa57")
+text = "CONTINUE
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

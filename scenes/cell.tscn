@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=4 uid="uid://c8catb4a3u3je"]
+
+[ext_resource type="Shader" path="res://resources/reveal.gdshader" id="1_ud555"]
+[ext_resource type="Texture2D" uid="uid://bjuwspbsbmk2t" path="res://assets/textures/Bricks.jpg" id="2_cqw5b"]
+[ext_resource type="Script" path="res://scripts/SetUVPositionMesh.gd" id="3_fs5dg"]
+[ext_resource type="Script" path="res://scripts/DrawViewport.gd" id="4_6gl42"]
+[ext_resource type="Script" path="res://scripts/Brush.gd" id="5_724t6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g18ld"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_ud555")
+shader_parameter/brightness = 0.7
+shader_parameter/texture_scale = Vector2(2, 2)
+shader_parameter/texture_offset = Vector2(0, 0)
+shader_parameter/rotation_angle = 90.0
+shader_parameter/MainColor = ExtResource("2_cqw5b")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w7a27"]
+resource_local_to_scene = true
+resource_name = "test_cell_MeshInstance3D"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/kBfoXp+ZGLjAUNkGn5foRp+DaP/PkNkxb9IZF5BZGLjAV+h4PxIZP5ADaP/Pl+h/kBDZHp+SCUogI+hGn5DZBp+KeBEvY+hxb9joV5BSCUogHNk4Pxjof5AKeBEvXNk"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoABQAIAAIABQALAAgADwAAAAwADwADAAAA"),
+"material": SubResource("ShaderMaterial_g18ld"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA////////AABU1f////8AAFTV//8AAAAA/////wAAAABU1f//AAAAAFTV/////////7////////9U1f///////1TV//8AAP///7///wAA//9U1f//AAD//1TVAAD//wAA//8AAP//AABU1QAA//8AAFTVAAAAAAAA//8AAAAAAABU1QAAAAAAAFTVAAD//////78AAP////9U1QAA/////1TVAAAAAP///78AAAAA//9U1QAAAAD//1TV/z//v1TVqiqqqlRV/z//v1RVVFWqqlRV/3//f1TVqiqqqlRV/3//f1RVVFWqqlRV/z//v1TVqipUVaqq/z//v1RVVFVUVaqq/3//f1TVqipUVaqq/3//f1RVVFVUVaqq")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p012t"]
+points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
+
+[node name="Cell" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("ArrayMesh_w7a27")
+skeleton = NodePath("")
+script = ExtResource("3_fs5dg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_p012t")
+
+[node name="DrawViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+script = ExtResource("4_6gl42")
+
+[node name="Brush" type="Node2D" parent="DrawViewport"]
+script = ExtResource("5_724t6")

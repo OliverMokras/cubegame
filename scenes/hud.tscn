@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8il6fdw8j68t"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_y7c4q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ns5mg"]
+font_size = 46
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control" groups=["hud"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_y7c4q")
+
+[node name="StopWatch" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_right = 91.5
+offset_bottom = 87.0
+grow_horizontal = 2
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_ns5mg")
+horizontal_alignment = 1
+vertical_alignment = 1

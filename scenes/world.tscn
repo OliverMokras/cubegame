@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmr4lntqfdrsc"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_e63b7"]
+[ext_resource type="PackedScene" uid="uid://c1aedexl8u4yq" path="res://scenes/game_menu.tscn" id="4_7q1dx"]
+[ext_resource type="Script" path="res://scripts/grid_map.gd" id="4_npnag"]
+[ext_resource type="PackedScene" uid="uid://b8il6fdw8j68t" path="res://scenes/hud.tscn" id="4_pkd7j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7qwq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ecn1h"]
+sky_material = SubResource("ProceduralSkyMaterial_m7qwq")
+
+[sub_resource type="Environment" id="Environment_15agp"]
+background_mode = 2
+sky = SubResource("Sky_ecn1h")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_e63b7")
+
+[node name="GameMenu" parent="." instance=ExtResource("4_7q1dx")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 12.322, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_15agp")
+
+[node name="GridMap" type="GridMap" parent="."]
+cell_size = Vector3(6, 6, 6)
+script = ExtResource("4_npnag")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_pkd7j")]

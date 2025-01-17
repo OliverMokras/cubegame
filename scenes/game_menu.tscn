@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1aedexl8u4yq"]
+
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_lb7lt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mjrl"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p55s7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1w2w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlema"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.588235)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjr1l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ul41i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lboaa"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="GameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lb7lt")
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.925353, 0.925353, 0.925353, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mjrl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -117.5
+offset_right = 124.5
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p55s7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1w2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlema")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjr1l")
+text = "RESUME
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ul41i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1w2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlema")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lboaa")
+text = "QUIT
+"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
